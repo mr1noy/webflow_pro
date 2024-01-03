@@ -10,3 +10,4 @@ const fullPrice = 80000;
 console.log (typeof fullPrice);
 const responsive = true;
 console.log (typeof responsive);
+
