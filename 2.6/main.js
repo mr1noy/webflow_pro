@@ -1,4 +1,4 @@
-let screenPrice = 10000
+let screenPrice;
 let percentage = 10
 let allServicePrices;
 let newTitle = '';
@@ -18,9 +18,18 @@ const checkIsNumber = function(x) {
 
 
 const asking = function() {
-    titleProject = prompt('Название проекта');    
-    screensValue = prompt('Шаблонные, с уникальным дизайном, с анимациями'); 
-    responsive = prompt('Нужен ли респонсивный сайт?');
+    titleProject = prompt('Название проекта', 'Проект');    
+    screensValue = prompt('Шаблонные, с уникальным дизайном, с анимациями', 'С анимациями'); 
+    responsive = prompt('Нужен ли респонсивный сайт?', 'Да');
+
+    screenPrice = prompt('Сколько это будет стоить?', 10000);
+
+    while (!checkIsNumber (screenPrice) || screenPrice.trim() === '' || screenPrice === null ) {
+        screenPrice = prompt('Сколько это будет стоить?', 10000)
+    }
+
+    screenPrice = Number(screenPrice)
+
 }
 
 
@@ -61,25 +70,30 @@ const getServicePercentPrice = function () {
 }
  
 const getTitle = function () {
-    return titleProject[0].toUpperCase() + titleProject.slice(1).toLocaleLowerCase()
+    return titleProject.trim()[0].toUpperCase() + titleProject.trim().slice(1).toLowerCase()
 }
 
 
 
 
-// Предоставление скидки
+const getPercentageMessage = function(price) {
+    
+    if(price > 50000) {
+        return 'Делаем скидку 10%'
+    } else if(price > 20000 && price < 40000) {
+        return 'Делаем скидку 5%'
+    } else if(price < 20000 && price > 0) {
+        return 'Скидка не предусмотрена'
+    } else if(price < 0) {
+        return 'Что-то пошло не так'
+    } else if(price === 0 || price === 20000 || price === 50000 ) {
+        return 'Проверка на строгое равенство';
+    }
 
-if(fullPrice > 50000) {
-    console.log('Делаем скидку 10%');
-} else if(fullPrice > 20000 && fullPrice < 40000) {
-    console.log('Делаем скидку 5%');
-} else if(fullPrice < 20000 && fullPrice > 0) {
-    console.log('Скидка не предусмотрена');
-} else if(fullPrice < 0) {
-    console.log('Что-то пошло не так');
-} else if(fullPrice === 0 || fullPrice === 20000 || fullPrice === 50000 ) {
-    console.log('Проверка на строгое равенство');
+
 }
+
+
 
 
 
@@ -98,7 +112,7 @@ console.log(service);
 console.log(serviceSecond);
 console.log(fullPrice);
 console.log (Math.ceil(servicePercentPrice));
-
+console.log(getPercentageMessage(fullPrice));
 
 
 
