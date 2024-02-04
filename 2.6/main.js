@@ -5,12 +5,11 @@ let newTitle = '';
 let titleProject;
 let screensValue;
 let responsive;
-// let servicePrice;
-// let servicePriceSecond;
 let service;
 let serviceSecond;
 let fullPrice;
 let servicePercentPrice;
+
 
 
 const checkIsNumber = function(x) {
@@ -98,8 +97,6 @@ console.log(responsive);
 console.log(service);
 console.log(serviceSecond);
 console.log(fullPrice);
-// console.log(servicePrice);
-// console.log(servicePriceSecond);
 console.log (Math.ceil(servicePercentPrice));
 
 
